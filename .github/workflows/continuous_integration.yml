@@ -54,13 +54,13 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
 
-      # - name: Windows Environment
-      #   run: "dir env:"
-      #   if: operating-system == 'windows-latest'
+      - name: Windows Environment
+        run: "dir env:"
+        if: matrix.operating-system == 'windows-latest'
 
-      # - name: Linux Environment
-      #   run: env
-      #   if: operating-system == 'ubuntu-latest'
+      - name: Linux Environment
+        run: env
+        if: matrix.operating-system == 'ubuntu-latest'
 
       # - name: Run gem list
       #   run: gem list
