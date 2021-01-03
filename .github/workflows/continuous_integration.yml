@@ -66,8 +66,8 @@ jobs:
         run: env
         if: matrix.operating-system == 'ubuntu-latest'
 
-      # - name: Run gem list
-      #   run: gem list
+      - name: List Gems
+        run: gem list
 
       # - name: Run rake build
       #   run: bundle exec rake build
