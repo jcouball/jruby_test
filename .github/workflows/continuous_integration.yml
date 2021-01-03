@@ -55,7 +55,8 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
 
       - name: Windows Environment
-        run: "dir env:"
+        run: "Get-ChildItem env:"
+        run: "$env:path – split ‘;’"
         if: matrix.operating-system == 'windows-latest'
 
       - name: Linux Environment
