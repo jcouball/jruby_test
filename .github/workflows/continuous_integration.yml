@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: [2.7, jruby-head]
+        ruby: [2.7, jruby-9.2, jruby-head]
         operating-system: [ubuntu-latest, windows-latest]
 
     name: Ruby ${{ matrix.ruby }} on ${{ matrix.operating-system }}
