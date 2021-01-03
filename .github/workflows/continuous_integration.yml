@@ -72,5 +72,5 @@ jobs:
       - name: Build Gem
         run: rake build
 
-      # - name: Run bundle exec rake build
-      #   run: bundle exec rake build
+      - name: List Gems with Bundler
+        run: bundle exec gem list
