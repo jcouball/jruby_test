@@ -56,6 +56,9 @@ jobs:
 
       - name: Windows Environment
         run: "Get-ChildItem env:"
+        if: matrix.operating-system == 'windows-latest'
+
+      - name: Windows Path
         run: "$env:path – split ‘;’"
         if: matrix.operating-system == 'windows-latest'
 
