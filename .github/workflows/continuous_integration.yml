@@ -67,7 +67,7 @@ jobs:
         if: matrix.operating-system == 'ubuntu-latest'
 
       - name: Windows Gem Path
-        run: '(Get-Command cmd).Path'
+        run: '(Get-Command gem).Path'
         if: matrix.operating-system == 'windows-latest'
 
       - name: Linux Gem Path
