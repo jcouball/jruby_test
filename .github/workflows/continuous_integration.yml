@@ -59,6 +59,9 @@ jobs:
       #     MATRIX_CONTEXT: ${{ toJson(matrix) }}
       #   run: echo "$MATRIX_CONTEXT"
 
+      - name: Ruby Version
+        run: ruby --version
+
       - name: Windows Environment
         run: "Get-ChildItem env:"
         if: matrix.operating-system == 'windows-latest'
