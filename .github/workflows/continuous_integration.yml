@@ -29,5 +29,19 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-      - name: Run Build
+      - name: Windows Environment
+        run: "dir env:"
+        if: operating-system == 'windows-latest'
+
+      - name: Linux Environment
+        run: env
+        if: operating-system == 'ubuntu-latest'
+
+      - name: Run gem list
+        run: gem list
+
+      - name: Run rake build
+        run: bundle exec rake build
+
+      - name: Run bundle exec rake build
         run: bundle exec rake build
