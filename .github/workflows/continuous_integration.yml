@@ -96,7 +96,7 @@ jobs:
         run: bundle exec gem build jruby_test.gemspec
 
       - name: Build Gem with rake build
-        run: rake build
+        run: rake --trace build
 
       - name: Build Gem with rake build via bundler
-        run: bundle exec rake build
+        run: bundle exec rake --trace build
