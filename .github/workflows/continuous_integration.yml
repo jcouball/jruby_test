@@ -66,6 +66,9 @@ jobs:
         run: env
         if: matrix.operating-system == 'ubuntu-latest'
 
+      - name: Gem Path
+        run: which gem
+
       - name: List Gems
         run: gem list
 
