@@ -29,30 +29,35 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
+      # - name: Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
+
+      # - name: Dump job context
+      #   env:
+      #     JOB_CONTEXT: ${{ toJson(job) }}
+      #   run: echo "$JOB_CONTEXT"
+
+      # - name: Dump steps context
+      #   env:
+      #     STEPS_CONTEXT: ${{ toJson(steps) }}
+      #   run: echo "$STEPS_CONTEXT"
+
+      # - name: Dump runner context
+      #   env:
+      #     RUNNER_CONTEXT: ${{ toJson(runner) }}
+      #   run: echo "$RUNNER_CONTEXT"
+
+      # - name: Dump strategy context
+      #   env:
+      #     STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      #   run: echo "$STRATEGY_CONTEXT"
+
+      # - name: Dump matrix context
+      #   env:
+      #     MATRIX_CONTEXT: ${{ toJson(matrix) }}
+      #   run: echo "$MATRIX_CONTEXT"
 
       - name: Windows Environment
         run: "Get-ChildItem env:"
@@ -77,17 +82,17 @@ jobs:
       - name: List Gems
         run: gem list
 
-      - name: Build Gem I
+      - name: List Gems via Bundler
+        run: bundle exec gem list
+
+      - name: Build Gem with gem
         run: gem build jruby_test.gemspec
 
-      - name: Build Gem II
+      - name: Build Gem with gem via bundler
         run: bundle exec gem build jruby_test.gemspec
 
-      - name: Build Gem III
+      - name: Build Gem with rake build
         run: rake build
 
-      - name: Build Gem IV
+      - name: Build Gem with rake build via bundler
         run: bundle exec rake build
-
-      - name: List Gems with Bundler
-        run: bundle exec gem list
