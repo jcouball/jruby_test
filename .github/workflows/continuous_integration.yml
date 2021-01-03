@@ -59,7 +59,7 @@ jobs:
         if: matrix.operating-system == 'windows-latest'
 
       - name: Windows Path
-        run: "$env:path – split ‘;’"
+        run: "$env:path"
         if: matrix.operating-system == 'windows-latest'
 
       - name: Linux Environment
