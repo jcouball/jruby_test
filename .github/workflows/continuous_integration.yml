@@ -29,19 +29,44 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-      - name: Windows Environment
-        run: "dir env:"
-        if: operating-system == 'windows-latest'
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
 
-      - name: Linux Environment
-        run: env
-        if: operating-system == 'ubuntu-latest'
+      # - name: Windows Environment
+      #   run: "dir env:"
+      #   if: operating-system == 'windows-latest'
 
-      - name: Run gem list
-        run: gem list
+      # - name: Linux Environment
+      #   run: env
+      #   if: operating-system == 'ubuntu-latest'
 
-      - name: Run rake build
-        run: bundle exec rake build
+      # - name: Run gem list
+      #   run: gem list
 
-      - name: Run bundle exec rake build
-        run: bundle exec rake build
+      # - name: Run rake build
+      #   run: bundle exec rake build
+
+      # - name: Run bundle exec rake build
+      #   run: bundle exec rake build
