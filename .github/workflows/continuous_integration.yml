@@ -77,8 +77,17 @@ jobs:
       - name: List Gems
         run: gem list
 
-      - name: Build Gem
+      - name: Build Gem I
+        run: gem build jruby_test.gemspec
+
+      - name: Build Gem II
+        run: bundle exec gem build jruby_test.gemspec
+
+      - name: Build Gem III
         run: rake build
+
+      - name: Build Gem IV
+        run: bundle exec rake build
 
       - name: List Gems with Bundler
         run: bundle exec gem list
