@@ -63,12 +63,16 @@ jobs:
         run: "Get-ChildItem env:"
         if: matrix.operating-system == 'windows-latest'
 
+      - name: Linux Environment
+        run: env
+        if: matrix.operating-system == 'ubuntu-latest'
+
       - name: Windows Path
         run: '$env:path.split(";")'
         if: matrix.operating-system == 'windows-latest'
 
-      - name: Linux Environment
-        run: env
+      - name: Linux Path
+        run: "echo \"$PATH\" | tr ':' '\n'"
         if: matrix.operating-system == 'ubuntu-latest'
 
       - name: Windows Gem Path
