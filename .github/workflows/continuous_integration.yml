@@ -69,7 +69,7 @@ jobs:
         run: "ruby -e 'puts Gem.win_platform?'"
 
       - name: host_os
-        run: "ruby -e 'puts RbConfig::CONFIG[\"host_os\"]'"
+        run: ruby -e 'puts RbConfig::CONFIG["host_os"]'
 
       - name: Windows Environment
         run: "Get-ChildItem env:"
