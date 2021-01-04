@@ -62,8 +62,19 @@ jobs:
       - name: Ruby Version
         run: ruby --version
 
+      - name: RUBY_PLATFORM
+        run: "ruby -e 'puts RUBY_PLATFORM'"
+
+      - name: win_platform
+        run: "ruby -e 'puts Gem.win_platform?'"
+
+      - name: host_os
+        run: "ruby -e 'RbConfig::CONFIG[\"host_os\"]'"
+
+      - name: RUBY_PLATFORM
+        run: "ruby -e 'puts RUBY_PLATFORM'"
+
       - name: Windows Environment
-        run: "Get-ChildItem env:"
         if: matrix.operating-system == 'windows-latest'
 
       - name: Linux Environment
