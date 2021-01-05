@@ -4,6 +4,12 @@ require_relative 'lib/jruby_test/version.rb'
 
 task :default => :spec
 
+task :popen_test do
+  cmd = ["gem", "build", "-V", "jruby_test.gemspec"]
+  output = IO.popen(cmd, :err => [:child, :out], &:read)
+  puts output
+end
+
 # if RUBY_PLATFORM == 'java'
 #   Rake::Task[:build].clear
 #   version = JrubyTest::VERSION
