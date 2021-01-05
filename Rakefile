@@ -10,6 +10,7 @@ task :popen_test_1 do
 end
 
 task :popen_test_2 do
+  puts "ENV['PATHEXT'] = '#{ENV['PATHEXT']}'"
   output = IO.popen(["gem", "build", "-V", "jruby_test.gemspec"], &:read)
   puts output.to_s
 end
