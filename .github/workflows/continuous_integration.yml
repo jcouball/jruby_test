@@ -95,8 +95,12 @@ jobs:
         run: which gem
         if: matrix.operating-system == 'ubuntu-latest'
 
-      - name: popen test
-        run: bundle exec rake popen_test
+      - name: Test popen for 'gem.bat'
+        run: bundle exec rake popen_test_1
+        if: matrix.operating-system == 'windows-latest'
+
+      - name: Test popen for 'gem'
+        run: bundle exec rake popen_test_2
 
       - name: List Gems
         run: gem list
