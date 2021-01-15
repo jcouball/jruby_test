@@ -95,12 +95,16 @@ jobs:
         run: which gem
         if: matrix.operating-system == 'ubuntu-latest'
 
-      - name: Test popen for 'gem.bat'
-        run: bundle exec rake popen_test_1
-        if: matrix.operating-system == 'windows-latest'
+      - name: Test popen for 'gem.bat' in JRuby on Windows
+        run: bundle exec rake popen_test_jruby_windows
+        if: matrix.ruby == 'jruby-head' && matrix.operating-system == 'windows-latest'
+
+      - name: Test popen for 'gem.cmd' in MRI on Windows
+        run: bundle exec rake popen_test_mri_windows
+        if: matrix.ruby == '2.7' && matrix.operating-system == 'windows-latest'
 
       - name: Test popen for 'gem'
-        run: bundle exec rake popen_test_2
+        run: bundle exec rake popen_test_no_extension
 
       - name: List Gems
         run: gem list
